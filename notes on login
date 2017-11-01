@@ -1,0 +1,76 @@
+TOC of modules
+UserLogin
+   greetUser
+   readUser
+   checkCase
+   checkLength
+   checkValidity
+   printUser
+   addToReport
+   printReport
+
+user inputs login
+check: login length >= 5
+check: login for case
+check: login for anything other than alphabet and !@#$
+   
+
+ADT
+class UserLogin
+   main method
+      call greetUser method
+      call readUser method
+      call checkCase method
+      call checkLength method
+      call checkValidity method
+      call printUser method
+      call addToReport method
+      call printReport method
+   end main 
+   
+   greetUser method
+      output "Please enter your new login:"
+   end greetUser
+   
+   readUser method (
+      scan in login
+      return login
+   end readUser
+   
+   checkCase method (login)
+      for (i < login length)
+         seclect i's character
+         if ( i is uppercase)
+            ucase is true
+            break if statement
+         end if
+         if (i is lowercase)
+            lcase is true
+         end if
+      end for
+   end checkCase
+   
+   checkLength method
+      
+   end checkLength
+   
+   checkValidity method
+      
+   end checkValidity
+   
+   printUser method
+      
+   end printUser
+   
+   addToReport method
+      
+   end addToReport
+   
+   printReport method
+      
+   end printReport
+end class
+
+6:35pm started the framework of the program / 7:00pm
+   verified framework
+9:20am

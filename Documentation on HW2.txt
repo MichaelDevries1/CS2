@@ -1,0 +1,17 @@
+Create countries class
+   fill with Country statistics from country borders txt file
+   
+Create borders class
+   fill with countries that border germany from CountryBoarders txt file
+   
+create hw2 class
+   Notify the necesity of choosing the first option in the menu
+   Create menu: 
+      Import the data
+      Display list of all countries that border Germany
+      Display list of all countries that have a pop of greater than 100 mil
+      Display list of both borders and pop
+   Create array of country statistics
+   Create array of country borders
+   Create linked list of Statistics
+   Create linked list of borders

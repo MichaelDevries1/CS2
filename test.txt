@@ -1,0 +1,9 @@
+This is a test document that will 
+save me time when 
+testing my program. 
+
+
+if if
+ I I we we no no
+
+This isn't the true test but it will work for now.
