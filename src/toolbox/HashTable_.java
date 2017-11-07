@@ -2,12 +2,11 @@ package toolbox;
 
 public class HashTable_ {
 
-	HashLink_[] table;
+	public HashLink_[] table;
 	
 	// Testing 
 	public HashTable_(double alpha, int size) {
-		int len = (int) ((double) size / alpha);
-		len *= 1.5;
+		int len = size / 2 + (int) ((double) size / alpha);
 		table = new HashLink_[len];
 		for (int i = 0; i < len; i++) {table[i] = null;}
 	} // end constructor

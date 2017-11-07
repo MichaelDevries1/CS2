@@ -57,17 +57,17 @@ public class HW7_ {
 			ht.put(c, prime);
 		} // end while
 		
-//		try {
-//			ObjectOutputStream out = new ObjectOutputStream(
-//					new FileOutputStream("UniqueHash.ser"));
-//			
-//			
-//			for (int i = 0; i < 5; i++) {
-//				out.writeObject(ht.get(prime));
-//			} // end for
-//			out.close();
-//		} catch (IOException i) {
-//			i.printStackTrace();
-//		} // end try/catch
+		try {
+			ObjectOutputStream out = new ObjectOutputStream(
+					new FileOutputStream("UniqueHash.ser"));
+			
+			
+			for (int i = 0; i < 5; i++) {
+				out.writeObject(ht.table[i]);
+			} // end for
+			out.close();
+		} catch (IOException i) {
+			i.printStackTrace();
+		} // end try/catch
 	} // end main
 } // end HW 7

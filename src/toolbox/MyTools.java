@@ -80,7 +80,7 @@ public class MyTools {
 		int num2 = 0;
 		StringBuffer result = new StringBuffer("");
 		
-		for (int i = n;; i++) {
+		for (int i = 0;; i++) {
 			if (primeCheck(n+i)) {
 				num1 = n + i;
 				break;
