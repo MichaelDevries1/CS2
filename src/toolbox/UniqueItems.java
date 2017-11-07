@@ -10,16 +10,21 @@ public class UniqueItems {
 	public UniqueItems () {	} // end constructor
 //===================================================================
 	public List<String> findUnique (String s) {
-		return collectSort(splitToAL(onlyText(s)));
+		List<String> unique = new ArrayList<String>();
+		s = onlyText (s);
+		unique = splitToAL(s);
+		unique = collectSort(unique);
+		return unique;
 	} // end findUnique
 //===================================================================
 /*	 Removes all special character except ', converts it to 
 	 	lowercase, and removes all separate lines.
 */
 	public String onlyText (String s) {
-		s.replaceAll("[^a-zA-Z0-9'\\s]", "");
-		s.replaceAll("\\s+", " ");
-		s.toLowerCase();
+		s = s.replaceAll("[^a-zA-Z0-9'\\s]", "");
+		s = s.replaceAll("\\s+", " ");
+		s = s.toLowerCase();
+
 		return s;
 	} // end onlyText
 //===================================================================
@@ -28,10 +33,11 @@ public class UniqueItems {
 	public List<String> splitToAL (String s) {
 		List<String> wordList = new ArrayList<String> 
 			(Arrays.asList(s.split(" ")));
+
 		return wordList;
 	} // end splitToAL
 //===================================================================
-	public static List<String> collectSort (List<String> word) {
+	public List<String> collectSort (List<String> word) {
 		List<String> unique = new ArrayList<>();
 		Iterator<String> witr = word.iterator();						// Create iterator for word list
 

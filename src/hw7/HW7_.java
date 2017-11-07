@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import toolbox.*;
 
-public class HW7 {
+public class HW7_ {
 	
 	static MyTools mt = new MyTools();									// Holds the tools for:
 																// 	-requesting file name
@@ -22,9 +22,8 @@ public class HW7 {
 	
 	public static void main (String[] args) {
 		int prime = 0;												// Testing figure
-		int key = 0;												// Sum of ascii values for words
 		double alpha = 0.0;											// Testing figure
-		String location = mt.fileLocation();							// Users input file name
+		
 		String fullDocument = null;									// Full document to be scanned in
 		List<String> unique = new ArrayList<>();						// List of unique words in document
 		Scanner scn = new Scanner(System.in);							// Alpha and prime request
@@ -38,6 +37,7 @@ public class HW7 {
 		prime = mt.closestPrime(prime);
 		
 		try {
+			String location = mt.fileLocation();							// Users input file name
 			Scanner file = new Scanner (new FileReader(location)).useDelimiter("\\Z");
 			fullDocument = file.next();
 			
@@ -48,26 +48,26 @@ public class HW7 {
 		
 		unique = ui.findUnique(fullDocument);
 		
-		HashTable ht = new HashTable(alpha, unique.size());
+		HashTable_ ht = new HashTable_(alpha, unique.size());
 		
 		Iterator<String> itr = unique.iterator();
 		
 		while (itr.hasNext()) {
 			String c = itr.next();
-			key = mt.sumAscii(c);
-			ht.put(key, c, prime);
+			ht.put(c, prime);
 		} // end while
 		
-		try {
-			ObjectOutputStream out = new ObjectOutputStream(
-					new FileOutputStream("UniqueHash.ser"));
-			
-			for (int i = 0; i < 5; i++) {
-				out.writeObject(ht.get(key, prime));
-			} // end for
-			out.close();
-		} catch (IOException i) {
-			i.printStackTrace();
-		} // end try/catch
+//		try {
+//			ObjectOutputStream out = new ObjectOutputStream(
+//					new FileOutputStream("UniqueHash.ser"));
+//			
+//			
+//			for (int i = 0; i < 5; i++) {
+//				out.writeObject(ht.get(prime));
+//			} // end for
+//			out.close();
+//		} catch (IOException i) {
+//			i.printStackTrace();
+//		} // end try/catch
 	} // end main
 } // end HW 7
