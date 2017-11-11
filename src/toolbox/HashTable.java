@@ -1,66 +1,57 @@
 package toolbox;
 
 public class HashTable {
-
-	HashLink[] table;
+	private MyLL[] hashArray;
+	public int size;
+	private int prime = 17;
 	
-	// Testing 
-	public HashTable(double alpha, int size) {
-		int len = (int) ((double) size / alpha);
-		table = new HashLink[len];
-		for (int i = 0; i < len; i++) {table[i] = null;}
-	} // end constructor
-//=========================================================
-	public String get (int key, int prime) {
-		int hash = key % prime;										// Calculate the prime
-		if (table[hash] == null) {									// Check if the current hash's LL is null
-			return null;
-		} else {													// If the hash's LL is not null
-			HashLink current = table[hash];							// Marks the current pointer in the LL
-			while (current != null && current.getKey() != key) {			
-				current = current.getNext();							// go to the next
-			} // end while
-			if (current == null) {
-				return null;
-			} else {
-				return current.getValue();
-			} // end if/else
-		} // end if else
-	}// end get
-//=========================================================
-	public void put (int key, String value, int prime) {
-		int hash = key % prime;
-		if (table[hash] == null) {
-			table[hash] = new HashLink (key, value);
-		} else {
-			HashLink current = table[hash];
-			while (current.getNext() != null && current.getKey() != key) {
-				current = current.getNext();
-			} // end while
-			if (current.getKey() == key) {
-				current.setValue(value);
-			} else {
-				current.setNext(new HashLink(key, value));
-			} // end if/else
-		} // end if/else
-	} // end put
-//=========================================================
-	public void remove (int key, int prime) {
-		int hash = key % prime;
-		if (table[hash] != null) {
-			HashLink prev = null;
-			HashLink current = table[hash];
-			while (current.getNext() != null && current.getKey() != key) {
-				prev = current;
-				current = current.getNext();
-			} // end while
-			if (current.getKey() == key) {
-				if (prev == null) {
-					table[hash] = current.getNext();
-				} else {
-					prev.setNext(current.getNext());
-				} // end if/else
-			} // end if
+	public HashTable (int size) {
+		hashArray = new MyLL[size];
+		for (int i = 0; i < size; i++) {
+			hashArray[i] = new MyLL();
+		} // end for
+	} // end HashTable constructor
+	
+	//====================================================
+	
+	private int computeHash (String s, int prime) {
+		int hash = 0;
+		
+		for (int i = 0; i < s.length(); i++) {
+			hash += s.charAt(i);
+		} // end for
+		return hash % (size + prime);
+	} // end computeHash
+	
+	//====================================================
+	
+	public boolean containsString (String target, int prime) {
+		int hash = computeHash(target, prime);
+		MyLL list = hashArray[hash];
+		if (!list.contains(target)) {
+			return true;
 		} // end if
-	} // end remove
-} // end HashTable
+		return false;
+	} // end containsString
+	
+	//====================================================
+	
+	public void put (String s, int prime) {
+		int hash = computeHash(s, prime);
+		 MyLL list = hashArray[hash];
+		 if (!list.contains(s)) {
+			 hashArray[hash].addFirst(s);
+		 } // end if
+	} // end put
+	
+	//====================================================
+	
+	public void printList(int n) {
+		MyLL list = hashArray[n];
+		System.out.print("Key " + n + ":");
+		if (!list.isEmpty()) {
+			list.outputList();
+		} // end if
+		System.out.println("");
+	} // end printList
+} // end HashTable Class
