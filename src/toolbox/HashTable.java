@@ -1,9 +1,10 @@
 package toolbox;
 
+import java.io.PrintWriter;
+
 public class HashTable {
 	private MyLL[] hashArray;
 	public int size;
-	private int prime = 17;
 	
 	public HashTable (int size) {
 		hashArray = new MyLL[size];
@@ -20,7 +21,7 @@ public class HashTable {
 		for (int i = 0; i < s.length(); i++) {
 			hash += s.charAt(i);
 		} // end for
-		return hash % (size + prime);
+		return hash % (size);
 	} // end computeHash
 	
 	//====================================================
@@ -53,5 +54,16 @@ public class HashTable {
 			list.outputList();
 		} // end if
 		System.out.println("");
+	} // end printList
+	
+	//====================================================
+	
+	public void printList(int n, PrintWriter p) {
+		MyLL list = hashArray[n];
+		p.print("Key " + n + ":");
+		if (!list.isEmpty()) {
+			list.outputList(p);
+		} // end if
+		p.println("");
 	} // end printList
 } // end HashTable Class

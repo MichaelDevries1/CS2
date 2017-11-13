@@ -2,6 +2,9 @@ package hw7;
 
 import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -20,13 +23,13 @@ public class HW7 {
 																// 	-obtaining the unique words
 	
 	public static void main (String[] args) {
-		Scanner p = new Scanner (System.in);
-		String location = mt.fileLocation();
+		Scanner scn = new Scanner (System.in);
+		String location = mt.fileLocation(scn);
 		String fullDocument = null;
 		List<String> unique = new ArrayList<>();
 		
 		mt.sop("What prime number would you like to hash with? ", 0);
-		int prime = p.nextInt();
+		int prime = scn.nextInt();
 		
 		
 		prime = mt.closestPrime(prime); 
@@ -37,6 +40,10 @@ public class HW7 {
 		} catch (FileNotFoundException e){
 			e.printStackTrace();
 		} // end Try/Catch
+		
+		try {
+			PrintWriter out = new PrintWriter (new FileWriter("testResults.txt"));
+		
 		
 		unique = ui.findUnique(fullDocument);
 		
@@ -50,8 +57,15 @@ public class HW7 {
 		} // end while
 		
 		for (int i = 0; i < unique.size(); i++) {
-			h.printList(i);
+			h.printList(i, out);
 		} // end for
-		p.close();
+		
+		out.close();
+		
+		} catch (IOException e) {
+			
+			e.printStackTrace();
+		}
+		scn.close();
 	} // end main
 } // end 

@@ -1,5 +1,6 @@
 package toolbox;
 
+import java.io.PrintWriter;
 import java.util.NoSuchElementException;
 
 public class MyLL {
@@ -140,6 +141,16 @@ public class MyLL {
 		Node position = head;
 		while (position != null) {
 			System.out.print(" " + position.data);
+			position = position.next;
+		} // end while
+	} // end outputList
+	
+	//===============================================
+	
+	public void outputList (PrintWriter p) {										// Prints out the current list
+		Node position = head;
+		while (position != null) {
+			p.print(" " + position.data);
 			position = position.next;
 		} // end while
 	} // end outputList

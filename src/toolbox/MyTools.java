@@ -37,12 +37,10 @@ public class MyTools {
  * 	Output
  * 	  @Scanner string
  */
-	public String fileLocation () {
-		Scanner scn = new Scanner (System.in);
+	public String fileLocation (Scanner scn) {
 		sop("What is the location and name of your file?", 2);
 		String file = scn.next();
 		
-		scn.close();
 		return file;
 	} // end location
 //=========================================================
