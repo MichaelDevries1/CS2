@@ -1,0 +1,3 @@
+I couldn't find a way to decrease the table size and guarentee that there would never be a balue over that limit so I kept the size of the list as the size of the array. I did think up the possibility of taking a value that is greater than the size of the array and subtracting that value by the size, then using the new value as the key, but my assignment is already late.
+
+I was trying to add a alpha value to the internal hashtable but I kept running into an error so I left it as the size only.

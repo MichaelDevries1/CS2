@@ -50,10 +50,12 @@ public class MyHashTable {
 	
 	public void printList(int n) {
 		MyLL list = hashArray[n];
-		System.out.print("Key " + n + ":");
+		System.out.print("\tKey " + n + ": ");
 		if (!list.isEmpty()) {
 			list.outputList();
-		} // end if
+		} else {
+			System.out.print("null");
+		}// end if/else
 		System.out.println("");
 	} // end printList
 	
@@ -61,10 +63,12 @@ public class MyHashTable {
 	
 	public void printList(int n, PrintWriter p) {
 		MyLL list = hashArray[n];
-		p.print("Key " + n + ":");
+		p.print("\tKey " + n + ":");
 		if (!list.isEmpty()) {
 			list.outputList(p);
-		} // end if
+		} else {
+			p.print("null");
+		}// end if/else
 		p.println("");
 	} // end printList
 } // end HashTable Class

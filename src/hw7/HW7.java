@@ -38,6 +38,7 @@ public class HW7 {
 		
 		unique = ui.findUnique(fullDocument);
 		
+		Hashtable<Integer, String> internal = new Hashtable<Integer, String>();
 		MyHashTable h = new MyHashTable(unique.size());
 		
 		Iterator<String> itr = unique.iterator();
@@ -45,13 +46,19 @@ public class HW7 {
 		while (itr.hasNext()) {
 			String word = itr.next();
 			h.put(word, prime);
+			internal.put(prime, word);
 		} // end while
 		
-		mt.p("Personal HashTable: ", 1);
-		for (int i = 0; i < unique.size(); i++) {
+		out.println("Personal HashTable: ");
+		for (int i = 0; i < 5; i++) {
 			h.printList(i, out);
 		} // end for
 		
+		out.println("\n\nInternal HashTable: ");
+		for (int i = 0; i < 5; i++) {
+			out.print("\tKey " + i + ": ");
+			out.println("" + internal.get(i));
+		}
 		out.close();
 		
 		} catch (IOException e) {

@@ -1,0 +1,14 @@
+Personal HashTable: 
+	Key 0:null
+	Key 1:null
+	Key 2:null
+	Key 3:null
+	Key 4:null
+
+
+Internal HashTable: 
+	Key 0: null
+	Key 1: null
+	Key 2: null
+	Key 3: null
+	Key 4: null
