@@ -38,7 +38,7 @@ public class MyTools {
  * 	  @Scanner string
  */
 	public String fileLocation (Scanner scn) {
-		sop("What is the location and name of your file?", 2);
+		p("What is the location and name of your file?", 2);
 		String file = scn.next();
 		
 		return file;
@@ -94,16 +94,16 @@ public class MyTools {
 					+ "The nearest prime number is ");
 			if (num1 > num2) {
 				result.append(num1 + ".");
-				sop (result, 1);
+				p (result, 1);
 				return num1;
 			} else {
 				result.append(num2 + ".");
-				sop (result, 1);
+				p (result, 1);
 				return num2;
 			} // end if/else
 		} else {
 			result.append("Your number is Prime!");
-			sop (result, 1);
+			p (result, 1);
 			return n;
 		} // end if/else
 	} // end closestPrime
@@ -119,19 +119,19 @@ public class MyTools {
 //=========================================================
 
 //=========================================================
-	public void sop (String s, int n) {
+	public void p (String s, int n) {
 		if (n == 1) {
 			System.out.println(s);
 		} else {
 			System.out.print(s);
 		} // end if/else
-	} // end String sop
+	} // end String p
 //=========================================================
-	public void sop (StringBuffer s, int n) {
+	public void p (StringBuffer s, int n) {
 		if (n == 1) {
 			System.out.println(s);
 		} else {
 			System.out.print(s);
 		} // end if/else
-	} // end StringBuffer sop
+	} // end StringBuffer p
 } // end MyTools

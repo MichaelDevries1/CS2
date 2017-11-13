@@ -2,11 +2,12 @@ package toolbox;
 
 import java.io.PrintWriter;
 
-public class HashTable {
+public class MyHashTable {
 	private MyLL[] hashArray;
-	public int size;
+	private int size;
 	
-	public HashTable (int size) {
+	public MyHashTable (int n) {
+		size = n;
 		hashArray = new MyLL[size];
 		for (int i = 0; i < size; i++) {
 			hashArray[i] = new MyLL();

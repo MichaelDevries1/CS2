@@ -1,24 +1,15 @@
 package hw7;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Scanner;
-import toolbox.HashTable;
-import toolbox.MyTools;
-import toolbox.UniqueItems;
+import java.io.*;
+import java.util.*;
+import toolbox.*;
 
 public class HW7 {
 	
 	static MyTools mt = new MyTools();									// Holds the tools for:
 																// 	-requesting file name
 																// 	-print statements
-																// 	-ascii totals
+																// 	-ASCII totals
 	static UniqueItems ui = new UniqueItems();							// Holds the tools for:
 																// 	-obtaining the unique words
 	
@@ -28,7 +19,7 @@ public class HW7 {
 		String fullDocument = null;
 		List<String> unique = new ArrayList<>();
 		
-		mt.sop("What prime number would you like to hash with? ", 0);
+		mt.p("What prime number would you like to hash with? ", 0);
 		int prime = scn.nextInt();
 		
 		
@@ -42,12 +33,12 @@ public class HW7 {
 		} // end Try/Catch
 		
 		try {
-			PrintWriter out = new PrintWriter (new FileWriter("testResults.txt"));
+			PrintWriter out = new PrintWriter (new FileWriter("HW7out.txt"));
 		
 		
 		unique = ui.findUnique(fullDocument);
 		
-		HashTable h = new HashTable(unique.size());
+		MyHashTable h = new MyHashTable(unique.size());
 		
 		Iterator<String> itr = unique.iterator();
 		
@@ -56,6 +47,7 @@ public class HW7 {
 			h.put(word, prime);
 		} // end while
 		
+		mt.p("Personal HashTable: ", 1);
 		for (int i = 0; i < unique.size(); i++) {
 			h.printList(i, out);
 		} // end for
