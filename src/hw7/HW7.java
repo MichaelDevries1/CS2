@@ -52,15 +52,15 @@ public class HW7 {
 		} // end while
 		
 		out.println("Personal HashTable: ");
-		for (int i = 0; i < h.size(); i++) {
+		for (int i = 0; i < 5; i++) {
 			h.printList(i, out);
 		} // end for
 		
-//		out.println("\n\nInternal HashTable: ");
-//		for (int i = 0; i < 5; i++) {
-//			out.print("\tKey " + i + ": ");
-//			out.println("" + internal.get(i));
-//		}
+		out.println("\n\nInternal HashTable: ");
+		for (int i = 0; i < 5; i++) {
+			out.print("\tKey " + i + ": ");
+			out.println("" + internal.get(i));
+		} // end for
 		out.close();
 		
 		} catch (IOException e) {
