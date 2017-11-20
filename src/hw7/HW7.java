@@ -13,6 +13,7 @@ public class HW7 {
 	static UniqueItems ui = new UniqueItems();							// Holds the tools for:
 																// 	-obtaining the unique words
 	
+	
 	public static void main (String[] args) {
 		Scanner scn = new Scanner (System.in);
 		String location = mt.fileLocation(scn);
