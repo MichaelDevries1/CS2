@@ -19,7 +19,7 @@ public class HW7 {
 		String location = mt.fileLocation(scn);
 		String fullDocument = null;
 		List<String> unique = new ArrayList<>();
-		final String TESTOUTPUT = "HW7out.txt";
+		final String TESTOUTPUT = "Out.txt";
 		
 		mt.p("What prime number would you like to hash with? ", 0);
 		int prime = scn.nextInt();

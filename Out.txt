@@ -1,0 +1,7 @@
+Wall Time: 
+	Merge:    00 min 00 sec
+	Internal:  00 min 00 sec
+
+CPU Time: 
+	Bubble:    73905032 nanoseconds
+	Internal:  20486674 nanoseconds

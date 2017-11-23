@@ -8,6 +8,9 @@
 
 package hw6;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.Random;
 import java.util.Scanner;
@@ -19,7 +22,7 @@ public class HW6 {
 		int i = 0;												// Counter
 		int size = 0;												// Size of the array
 		int big = -1;												// Range size
-		StringBuffer results = new StringBuffer();						// The collection of the results
+				
 		
 		// Create the merge instances
 		MergeSort<Integer> iMerge = new MergeSort<>();
@@ -100,8 +103,10 @@ public class HW6 {
 		long internalWTime = ewInternal - swInternal;
 		long internalCTime = ecInternal - scInternal;
 		
+		try {
+			PrintWriter out = new PrintWriter (new FileWriter ("Out.txt"));
 		// Add the times to the print string
-		results.append("Wall Time: \n\tMerge:    " + 
+		out.println("Wall Time: \n\tMerge:    " + 
 				String.format("%02d min %02d sec", 
 				TimeUnit.MILLISECONDS.toMinutes(MergeWTime),
 				TimeUnit.MILLISECONDS.toSeconds(MergeWTime) - 
@@ -114,8 +119,11 @@ public class HW6 {
 				"\n\nCPU Time: \n\tBubble:    " + MergeCTime + 
 				" nanoseconds\n\tInternal:  " + internalCTime +
 				" nanoseconds");
-
-		sop(results);													// Display results
+		
+		out.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} // end try/catch
 		
 		// Close scanner
 		scn.close();
