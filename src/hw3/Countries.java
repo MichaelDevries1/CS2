@@ -19,4 +19,4 @@ public class Countries {
 	   this.countryGDP = countryGDP;
 	   this.countryYear = countryYear;
    } // end countries
-}
+} // end countries class

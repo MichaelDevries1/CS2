@@ -9,10 +9,6 @@ public class Countries {
    public double countryGDP = 0.0;
    public int countryYear = 0;
    
-   public Countries() {
-
-   }
-   
    public Countries (String name, String latitude, String longitude, int area, int pop, double gdp, int year){
 	   this.countryName = name;
 	   this.latitude = latitude;
@@ -21,7 +17,5 @@ public class Countries {
 	   this.countryPopulation = pop;
 	   this.countryGDP = gdp;
 	   this.countryYear = year;
-   } // end countries
-
-
-}
+   } // end Constructor
+} // end countries class

@@ -24,8 +24,8 @@ public class HW3<AnyType> {
 		List<Borders> border = new ArrayList<Borders>();
 				
 		// Creates the 2 Linked Lists
-		LinkedList<CountriesLL> countLL = new LinkedList<CountriesLL>();
-		LinkedList<BordersLL> borderLL = new LinkedList<BordersLL>();
+		LinkedList<Countries> countLL = new LinkedList<Countries>();
+		LinkedList<Borders> borderLL = new LinkedList<Borders>();
 		
 		int answer = 0;
 		
@@ -108,12 +108,12 @@ public class HW3<AnyType> {
 		return arr;
 	} // end border
 //=========================================================================================================================================
-	public static void countryLL(LinkedList<CountriesLL> ll, BufferedReader input) throws IOException {
+	public static void countryLL(LinkedList<Countries> ll, BufferedReader input) throws IOException {
 		String tempString = input.readLine();
 		
 		while (tempString != null) {
 			String[] piece = tempString.split(",");
-			CountriesLL temp = new CountriesLL (piece[0], piece[1], piece[2], 
+			Countries temp = new Countries (piece[0], piece[1], piece[2], 
 					Integer.parseInt(piece[3]), Integer.parseInt(piece[4]), 
 					Double.parseDouble(piece[5]), Integer.parseInt(piece[6]));
 			
@@ -123,12 +123,12 @@ public class HW3<AnyType> {
 		} // end while
 	} // end countryLL
 //=========================================================================================================================================	
-	public static void bordersLL(LinkedList<BordersLL> ll, BufferedReader input) throws IOException {
+	public static void bordersLL(LinkedList<Borders> ll, BufferedReader input) throws IOException {
 		String tempString = input.readLine();
 		
 		while (tempString != null) {
 			String[] piece = tempString.split(",");
-			BordersLL temp = new BordersLL (piece[0], piece[1]);
+			Borders temp = new Borders (piece[0], piece[1]);
 			
 			ll.addFirst(temp);
 			
@@ -136,7 +136,7 @@ public class HW3<AnyType> {
 		} // end while
 	} // end bordersLL
 //=========================================================================================================================================	
-	public static void bordering(List<Borders> arr, LinkedList<BordersLL> ll) {
+	public static void bordering(List<Borders> arr, LinkedList<Borders> ll) {
 		// Bordering countries array list
 		String query = "Germany";
 		Iterator<Borders> itr = arr.iterator();
@@ -150,10 +150,10 @@ public class HW3<AnyType> {
 		sop("", 1);
 		
 		// Bordering countries linked list
-		Iterator<BordersLL> bitr = ll.iterator();
+		Iterator<Borders> bitr = ll.iterator();
 		
 		while (bitr.hasNext()) {
-			BordersLL bll = (BordersLL)bitr.next();
+			Borders bll = (Borders)bitr.next();
 			if (bll.country1.equalsIgnoreCase(query)) {
 				sop(bll.country2 + " ", 2);
 			} // end if
@@ -161,7 +161,7 @@ public class HW3<AnyType> {
 		sop("", 1);
 	} // end bordering
 //=========================================================================================================================================	
-	public static void pop(List<Countries> arr, LinkedList<CountriesLL> ll) {
+	public static void pop(List<Countries> arr, LinkedList<Countries> ll) {
 		// Population query array list
 		Iterator<Countries> itr = arr.iterator();
 		
@@ -174,10 +174,10 @@ public class HW3<AnyType> {
 		sop("", 1);
 		
 		// Population query linked list
-		Iterator<CountriesLL> citr = ll.iterator();
+		Iterator<Countries> citr = ll.iterator();
 		
 		while (citr.hasNext()) {
-			CountriesLL cll = (CountriesLL)citr.next();
+			Countries cll = (Countries)citr.next();
 			if (cll.countryPopulation >= 35000000) {
 				sop(cll.countryName + " ", 2);
 			} // end if
@@ -185,8 +185,8 @@ public class HW3<AnyType> {
 		sop("", 1);
 	} // end pop
 //=========================================================================================================================================	
-	public static void both(List<Countries> carr, List<Borders> barr, LinkedList<CountriesLL> cll,
-			LinkedList<BordersLL> bll) {
+	public static void both(List<Countries> carr, List<Borders> barr, LinkedList<Countries> cll,
+			LinkedList<Borders> bll) {
 		// Both array list
 		int counter = 0;
 		String query = "Germany";
@@ -214,14 +214,14 @@ public class HW3<AnyType> {
 		// Both linked list
 		counter = 0;
 		
-		Iterator<CountriesLL> cllitr = cll.iterator();
+		Iterator<Countries> cllitr = cll.iterator();
 		
 		while (cllitr.hasNext()) {
-			CountriesLL cl = (CountriesLL)cllitr.next();
-			Iterator<BordersLL> bllitr = bll.iterator();
+			Countries cl = (Countries)cllitr.next();
+			Iterator<Borders> bllitr = bll.iterator();
 			if (cl.countryPopulation >= 35000000) {
 				while (bllitr.hasNext()) {
-					BordersLL bl = (BordersLL) bllitr.next();
+					Borders bl = (Borders) bllitr.next();
 					if (bl.country1.equalsIgnoreCase(query) && 
 							cl.countryName.equalsIgnoreCase(bl.country2)) {
 						sop(cl.countryName + " ", 2);

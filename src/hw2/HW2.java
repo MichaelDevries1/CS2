@@ -8,7 +8,7 @@ public class HW2 {
 		Scanner scn = new Scanner(System.in);
 	      
 		// Input files
-		BufferedReader inputCI = new BufferedReader 								// Countries input file
+		BufferedReader inputCI = new BufferedReader 									// Countries input file
 				(new FileReader ("CountriesInfo.txt"));								
 		BufferedReader inputCILL = new BufferedReader 								// CountriesLL input file
 				(new FileReader ("CountriesInfo.txt"));								
@@ -22,35 +22,35 @@ public class HW2 {
 		Borders[] bordersArr = new Borders[8];										// Array for Borders
 	      
 		// Creates the 2 linked-lists
-		LinkedListHW2<Countries> cll = new LinkedListHW2<Countries>();				// Linked List for Countries
-		LinkedListHW2<Borders> bll = new LinkedListHW2<Borders>();					// Linked List for Borders.
+		LinkedListHW2<Countries> cll = new LinkedListHW2<Countries>();					// Linked List for Countries
+		LinkedListHW2<Borders> bll = new LinkedListHW2<Borders>();						// Linked List for Borders.
 	      
 		int answer = 0;
 	      
-		sop("Please select the option you want the information for:\n" + 			// Request an input for menu
-				"**The first option is required before the others in order " + 		// 
+		sop("Please select the option you want the information for:\n" + 				// Request an input for menu
+				"**The first option is required before the others in order " + 			// 
 				"to populate your results.\n", 1);     	 							//
 	          
 		// Menu section
-		while (answer != 5) {														// Check if program should end
-			answer = menu(scn);		                        						// Display options and request input
+		while (answer != 5) {													// Check if program should end
+			answer = menu(scn);		                        							// Display options and request input
 			switch (answer) {															
-				case 1: 
+				case 1: 														// Imports data into arrays and linked lists
 					countryArr = country(countryArr, inputCI);
 					bordersArr = border(bordersArr, inputB);
 					cll = countryLL(cll, inputCILL);
 					bll = borderLL(bll, inputBLL);
 					break;
-				case 2:
+				case 2:														// Prints the countries bordering a specified country
 					borders(bordersArr, bll);
 					break;
-				case 3:
+				case 3:														// Prints the countries with pop >= 35 mil
 					pop(countryArr, cll);
 					break;
-				case 4:
-					both(bordersArr, countryArr, cll, bll);
+				case 4:														// Prints the countries bordering a specified country
+					both(bordersArr, countryArr, cll, bll);							// which also has a pop >= 35 mil	
 					break;
-				case 5:
+				case 5:														// Closes the program
 					break;
 				default:
 					sop("Invalid input. Please "  +       							// Invalid input catch
@@ -67,73 +67,73 @@ public class HW2 {
 	} // End Main
 //=========================================================================================================================================	
 	public static int menu (Scanner scn) {
-		sop("1) Import the data\n"               								+ 	// Display menu items
-			"2) Display list of all countries that border Germany\n"  			+	//
-			"3) Display list of all countries that have a population greater "  + 	//
-			"than 35 million\n"                  								+	// 
-			"4) Display list of all countries that border Germany AND have a "  + 	// 
-			"population greater than 35 million\n"        						+ 	// 
-			"5) Quit the Program\n", 1);
-		return scn.nextInt();
+		sop("1) Import the data\n"               						  + 			// Display menu items
+			"2) Display list of all countries that border Germany\n"  		  +			//
+			"3) Display list of all countries that have a population greater " + 			//
+			"than 35 million\n"                  						  +			// 
+			"4) Display list of all countries that border Germany AND have a " +	 		// 
+			"population greater than 35 million\n"        				  +		 	// 
+			"5) Quit the Program\n", 1);											//
+		return scn.nextInt();													// Returns the option the user chooses
 	} // end bordersLL
 //=========================================================================================================================================	
 	public static Countries[] country (Countries[] ca, BufferedReader input) throws IOException {
-		int i = 0;																	// Counter
-		String temp = input.readLine();												// Read the first line
-		while (temp != null && i < ca.length) {										// 
+		int i = 0;															// Counter
+		String temp = input.readLine();											// Read the first line
+		while (temp != null && i < ca.length) {										// Iterate till input file is empty
 			String[] p = temp.split(",");											// Separate information
-			ca[i] = new Countries(p[0], p[1], p[2], Integer.parseInt(p[3]),			// Create new array value
+			ca[i] = new Countries(p[0], p[1], p[2], Integer.parseInt(p[3]),				// Create new country instance
 					Integer.parseInt(p[4]),Double.parseDouble(p[5]),
 					Integer.parseInt(p[6]));
 			
-			temp = input.readLine();													// Read the next line
-			i++;																		// Iterate
+			temp = input.readLine();												// Read the next line
+			i++;																// Iterate
 		} // End while
-		return ca;	
+		return ca;															// Return the filled countries array
 	} // end country
 //=========================================================================================================================================	
 	public static Borders[] border(Borders[] ba, BufferedReader input) throws IOException {
-		int i = 0;																	// Counter
+		int i = 0;															// Counter
 	      String temp = input.readLine();											// Read first line
 	      while (temp != null && i < ba.length) {									// Iterate till input file is empty
 	         String[] p = temp.split(",");											// Separate information
-	         ba[i] = new Borders(p[0], p[1]);										// Create new array item											// Input bordering country to first
+	         ba[i] = new Borders(p[0], p[1]);										// Create new borders instance
 	         temp = input.readLine(); 												// Read next line
-	         i++;																	// Iterate
+	         i++;																// Iterate
 	      } // End while
-	      return ba;
+	      return ba;															// Return the filled borders array
 	} // end border
 //=========================================================================================================================================	
 	public static LinkedListHW2<Countries> countryLL (LinkedListHW2<Countries> cll, BufferedReader input) throws IOException {
-		String tempString = input.readLine();
+		String tempString = input.readLine();										// Read first line
 		   
-		   while (tempString != null) {
-			   String[] p = tempString.split(",");
-			   Countries temp = new Countries (p[0], p[1], p[2], 
+		   while (tempString != null) {											// Iterate till input file is empty
+			   String[] p = tempString.split(",");									// Separate information
+			   Countries temp = new Countries (p[0], p[1], p[2], 						// Create new country instance
 					   Integer.parseInt(p[3]), Integer.parseInt(p[4]), 
 					   Double.parseDouble(p[5]), Integer.parseInt(p[6]));
 			   
-			   cll.addFirst(temp);
+			   cll.addFirst(temp);												// Add the instance to the front of the list
 			   
-			   tempString = input.readLine();
+			   tempString = input.readLine();										// Read the next line
 		   } // end while
 		   
-		   return cll;	
+		   return cll;															// Return the filled countries linked list
 	} // end countryLL
 //=========================================================================================================================================	
 	public static LinkedListHW2<Borders> borderLL (LinkedListHW2<Borders> bll, BufferedReader input) throws IOException {
-		String tempString = input.readLine();
+		String tempString = input.readLine();										// Read the first line
 		   
-		while (tempString != null) {
-			String[] piece = tempString.split(",");
-			Borders temp = new Borders (piece[0], piece[1]);
+		while (tempString != null) {												// Iterate till file is empty
+			String[] piece = tempString.split(",");									// Separate information
+			Borders temp = new Borders (piece[0], piece[1]);							// Create new borders instance
 			   
-			bll.addFirst(temp);
+			bll.addFirst(temp);													// Add the instance to the front of the list
 			   
-			tempString = input.readLine();
+			tempString = input.readLine();										// Read next line
 		} // end while
 		   
-		return bll;
+		return bll;															// Return the filled borders linked list
 	} // end borderLL
 //=========================================================================================================================================	
 	public static void borders (Borders[] b, LinkedListHW2<Borders> bll) {
@@ -145,6 +145,7 @@ public class HW2 {
 				sop(b[i].country2 + " ", 2);										// the given name and print out its borders
 				counter++;
 			} // end if
+			// Format the resulting list
 			if (counter == 4) {
 				sop("", 1);
 				counter = 0;
@@ -158,10 +159,11 @@ public class HW2 {
 		
 		while (itr.hasNext()) {
 			Borders bo = (Borders)itr.next();
-			if (bo.country1.equalsIgnoreCase(country)) {							// Check if any of the first countries match 
-				sop(bo.country2 + " ", 2);											// the given name and print out its borders
+			if (bo.country1.equalsIgnoreCase(country)) {								// Check if any of the first countries match 
+				sop(bo.country2 + " ", 2);										// the given name and print out its borders
 				counter++;
 			} // end if
+			// Format the resulting list
 			if (counter == 4) {
 				sop("", 1);
 				counter = 0;
@@ -174,8 +176,8 @@ public class HW2 {
 		// Array population
 		int counter = 0;
 		for (int i = 0; i < c.length; i++) {
-			if (c[i].countryPopulation >= 35000000) {
-				sop(c[i].countryName + " ", 2);
+			if (c[i].countryPopulation >= 35000000) {								// Check if any of the countries have a
+				sop(c[i].countryName + " ", 2);									// population greater than 35,000,000
 	            counter++;
 			} // end if
 			if (counter == 4) {
@@ -190,8 +192,8 @@ public class HW2 {
 		
 		while (itr.hasNext()) {
 			Countries co = (Countries)itr.next();
-			if (co.countryPopulation >= 35000000) {									// Check if any of the first countries match 
-				sop(co.countryName + " ", 2);										// the given name and print out its borders
+			if (co.countryPopulation >= 35000000) {									// Check if any of the countries have a  
+				sop(co.countryName + " ", 2);										// population greater than 35,000,000
 				counter++;
 			} // end if
 			if (counter == 4) {

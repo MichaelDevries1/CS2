@@ -1,0 +1,36 @@
+Tax program information
+
+things to request:
+	-item price
+	-country or state
+		-what state?
+
+
+displays:
+	main window
+		- text input
+		-country or state drop down box
+		-state drop down box
+		-calculate button
+		-invisible line under calculate button for results
+		
+order:
+	1. Create main window
+		a. Create main window buttons
+			- Close button
+			- Min button
+			- Restore button
+		b. Create digit input location
+			- Text for location: Item Price: $
+		c. Create drop down box (federal/state)
+			- Text for ddb: Tax area: 
+		d. Create drop down box (states)
+			- Text for ddb: State:
+			- Make unchangeable until "state" is chosen for tax area.
+		e. Create button
+			- Text for button: Calculate!
+	2. Request item price
+	3. Request federal or state tax
+		a. If state, release the state box 
+		b. Request state
+	
